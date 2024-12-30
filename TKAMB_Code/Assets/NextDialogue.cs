@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class NextDialogue : MonoBehaviour
 {
-    int index = 2;
+    int index = 1;
+    int count = 0;
     public PlayerMovement PlayerMovement;
 
     // Update is called once per frame
@@ -22,10 +23,15 @@ public class NextDialogue : MonoBehaviour
             {
                 transform.GetChild(index).gameObject.SetActive(true);
                 index += 1;
+                count += 1;
                 if (transform.childCount == index)
                 {
-                    index = 2;
+                    index = 1;
                     PlayerMovement.dialogue = false;
+                    for (int i = 1; i <= count; i++)
+                    {
+                        Destroy(transform.GetChild(i).gameObject);
+                    }
                 }
             }
             else

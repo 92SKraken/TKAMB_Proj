@@ -8,7 +8,7 @@ public class NPC_Interact : MonoBehaviour
 {
     public GameObject d_template;
     public GameObject canvas;
-    bool player_dectection = false;
+    bool player_detection = false;
 
     public int NumberOfLines;
 
@@ -28,18 +28,18 @@ public class NPC_Interact : MonoBehaviour
     {
         if(collision.name == "Player")
         {
-            player_dectection = true;
+            player_detection = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        player_dectection = false;
+        player_detection = false;
     }
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if(player_dectection && context.performed && !PlayerMovement.dialogue)
+        if(player_detection && context.performed && !PlayerMovement.dialogue)
         {
             canvas.SetActive(true);
             PlayerMovement.dialogue = true;
