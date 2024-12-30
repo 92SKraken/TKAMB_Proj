@@ -990,9 +990,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   d_template: {fileID: 1351355342}
   canvas: {fileID: 287049903}
+  NumberOfLines: 6
   Line1: Big
   Line2: Juicy
   Line3: Balls
+  Line4: Are
+  Line5: Certaintly
+  Line6: Scrumptous
+  Line7: Yay
+  Line8: Nerp
+  Line9: Boo
   PlayerMovement: {fileID: 1568267050}
 --- !u!1 &1351355342
 GameObject:
