@@ -8,9 +8,12 @@ public class NPC_Interact : MonoBehaviour
 {
     public GameObject d_template;
     public GameObject canvas;
+    public GameObject speechReady;
+
     bool player_detection = false;
 
     public int NumberOfLines;
+    public int NumberOfLines1;
 
     public string Line1;
     public string Line2;
@@ -21,6 +24,18 @@ public class NPC_Interact : MonoBehaviour
     public string Line7;
     public string Line8;
     public string Line9;
+
+    public string Line11;
+    public string Line21;
+    public string Line31;
+    public string Line41;
+    public string Line51;
+    public string Line61;
+    public string Line71;
+    public string Line81;
+    public string Line91;
+
+    int count = 1;
 
     public PlayerMovement PlayerMovement;
 
@@ -39,8 +54,9 @@ public class NPC_Interact : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if(player_detection && context.performed && !PlayerMovement.dialogue)
+        if(player_detection && context.performed && !PlayerMovement.dialogue && speechReady.activeInHierarchy && count == 1)
         {
+            speechReady.SetActive(false);
             canvas.SetActive(true);
             PlayerMovement.dialogue = true;
             if (NumberOfLines >= 1)
@@ -79,6 +95,52 @@ public class NPC_Interact : MonoBehaviour
             {
                 NewDialogue(Line9);
             }
+            count++;
+            canvas.transform.GetChild(1).gameObject.SetActive(true);
+        }
+
+        if (player_detection && context.performed && !PlayerMovement.dialogue && speechReady.activeInHierarchy && count == 2)
+        {
+            speechReady.SetActive(false);
+            canvas.SetActive(true);
+            PlayerMovement.dialogue = true;
+            if (NumberOfLines1 >= 1)
+            {
+                NewDialogue(Line11);
+            }
+            if (NumberOfLines1 >= 2)
+            {
+                NewDialogue(Line21);
+            }
+            if (NumberOfLines1 >= 3)
+            {
+                NewDialogue(Line31);
+            }
+            if (NumberOfLines1 >= 4)
+            {
+                NewDialogue(Line41);
+            }
+            if (NumberOfLines1 >= 5)
+            {
+                NewDialogue(Line51);
+            }
+            if (NumberOfLines1 >= 6)
+            {
+                NewDialogue(Line61);
+            }
+            if (NumberOfLines1 >= 7)
+            {
+                NewDialogue(Line71);
+            }
+            if (NumberOfLines1 >= 8)
+            {
+                NewDialogue(Line81);
+            }
+            if (NumberOfLines1 >= 9)
+            {
+                NewDialogue(Line91);
+            }
+            count++;
             canvas.transform.GetChild(1).gameObject.SetActive(true);
         }
     }

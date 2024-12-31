@@ -7,6 +7,8 @@ public class MoveBush : MonoBehaviour
 {
     [SerializeField] private Transform bush;
     bool player_detection = false;
+
+    public GameObject dillSpeechReady;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")
@@ -24,6 +26,7 @@ public class MoveBush : MonoBehaviour
         if(context.performed && player_detection)
         {
             bush.Translate(Vector2.right * 1200 * Time.deltaTime);
+            dillSpeechReady.SetActive(true);
         }
     }
 }
