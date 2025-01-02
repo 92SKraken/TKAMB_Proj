@@ -7,6 +7,7 @@ public class MoveBush : MonoBehaviour
 {
     [SerializeField] private Transform bush;
     bool player_detection = false;
+    bool bushMoved = false;
 
     public GameObject dillSpeechReady;
     private void OnTriggerEnter2D(Collider2D collision)
