@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using Unity.Collections;
+using System.IO.Pipes;
+using Unity.VisualScripting.FullSerializer;
+using System;
 
 public class NPC_Interact : MonoBehaviour
 {
@@ -12,35 +16,44 @@ public class NPC_Interact : MonoBehaviour
 
     bool player_detection = false;
 
-    public int NumberOfLines;
-    public int NumberOfLines1;
+    public string Name;
 
-    public string Line1;
-    public string Line2;
-    public string Line3;
-    public string Line4;
-    public string Line5;
-    public string Line6;
-    public string Line7;
-    public string Line8;
-    public string Line9;
+    Dictionary<string, string> dialogueCounts = new Dictionary<string, string>() 
+    {
+        {"Jem", "1"},
+        {"Dill", "1"}
+    };
 
-    public string Line11;
-    public string Line21;
-    public string Line31;
-    public string Line41;
-    public string Line51;
-    public string Line61;
-    public string Line71;
-    public string Line81;
-    public string Line91;
+    Dictionary<string, List<string>> actions = new Dictionary<string, List<string>>()
+    {
+        {"I'm spending the summer here", new List<string>{"Talk", "Jem"}},
+        {"I wonder who lives there", new List<string>{"Talk", "Jem"}},
+        {"Boo Radley lives there and he never comes out (we should prob add more to this line)", new List<string>{"Talk", "Dill"}},
+        {"I bet you won't touch it", new List<string>{"Talk", "Jem"}},
+        {"You'll see. I'll touch it", new List<string>{"TouchHouse", "Jem"}}
+    };
 
-    public string speaker1;
-    public string speaker2;
-
-    public int speakerSwitch = 100;
-
-    int count = 1;
+    Dictionary<string, string> Jem = new Dictionary<string, string>()
+    {
+        {"1a", "Hey Scout!"},
+        {"1b", "Lets go play in the backyard"},
+        {"2a", "Whose that?"},
+        {"2b", "Lets move the bush to find out."},
+        {"3a", "You can come play with us"},
+        {"3b", "I'm Jem and this is Scout."},
+        {"4a", "Thats the Radley house."},
+        {"4b", "Boo Radley lives there and he never comes out (we should prob add more to this line)"},
+        {"5a", "You'll see. I'll touch it."}
+    };
+    Dictionary<string, string> Dill = new Dictionary<string, string>()
+    {
+        {"1a", "Hi! I'm Dill."},
+        {"1b", "I can read."},
+        {"1c", "I'm spending the summer here"},
+        {"2a", "Wow that's a creepy house."},
+        {"2b", "I wonder who lives there."},
+        {"3a", "I bet you won't touch it"}
+    };
 
     public PlayerMovement PlayerMovement;
 
@@ -59,214 +72,52 @@ public class NPC_Interact : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if(player_detection && context.performed && !PlayerMovement.dialogue && speechReady.activeInHierarchy && count == 1)
+        if (player_detection && context.performed && !PlayerMovement.dialogue && speechReady.activeInHierarchy)
         {
             speechReady.SetActive(false);
             canvas.SetActive(true);
             PlayerMovement.dialogue = true;
-            if (NumberOfLines >= 1)
-            {
-                NewDialogue(Line1, speaker1);
-            }
-            if (NumberOfLines >= 2)
-            {
-                if (speakerSwitch <= 2)
-                {
-                    NewDialogue(Line2, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line2, speaker1);
-                }
-            }
-            if (NumberOfLines >= 3)
-            {
-                if (speakerSwitch <= 3)
-                {
-                    NewDialogue(Line3, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line3, speaker1);
-                }
-            }
-            if (NumberOfLines >= 4)
-            {
-                if (speakerSwitch <= 4)
-                {
-                    NewDialogue(Line4, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line4, speaker1);
-                }
-            }
-            if (NumberOfLines >= 5)
-            {
-                if (speakerSwitch <= 5)
-                {
-                    NewDialogue(Line5, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line5, speaker1);
-                }
-            }
-            if (NumberOfLines >= 6)
-            {
-                if (speakerSwitch <= 6)
-                {
-                    NewDialogue(Line6, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line6, speaker1);
-                }
-            }
-            if (NumberOfLines >= 7)
-            {
-                if (speakerSwitch <= 7)
-                {
-                    NewDialogue(Line7, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line7, speaker1);
-                }
-            }
-            if (NumberOfLines >= 8)
-            {
-                if (speakerSwitch <= 8)
-                {
-                    NewDialogue(Line8, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line8, speaker1);
-                }
-            }
-            if (NumberOfLines >= 9)
-            {
-                if (speakerSwitch <= 9)
-                {
-                    NewDialogue(Line9, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line9, speaker1);
-                }
-            }
-            count++;
-            canvas.transform.GetChild(1).gameObject.SetActive(true);
-        }
-
-        if (player_detection && context.performed && !PlayerMovement.dialogue && speechReady.activeInHierarchy && count == 2)
-        {
-            speechReady.SetActive(false);
-            canvas.SetActive(true);
-            PlayerMovement.dialogue = true;
-            if (NumberOfLines1 >= 1)
-            {
-                NewDialogue(Line11, speaker1);
-            }
-            if (NumberOfLines1 >= 2)
-            {
-                if (speakerSwitch <= 2)
-                {
-                    NewDialogue(Line21, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line21, speaker1);
-                }
-            }
-            if (NumberOfLines1 >= 3)
-            {
-                if (speakerSwitch <= 3)
-                {
-                    NewDialogue(Line31, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line31, speaker1);
-                }
-            }
-            if (NumberOfLines1 >= 4)
-            {
-                if (speakerSwitch <= 4)
-                {
-                    NewDialogue(Line41, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line41, speaker1);
-                }
-            }
-            if (NumberOfLines1 >= 5)
-            {
-                if (speakerSwitch <= 5)
-                {
-                    NewDialogue(Line51, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line51, speaker1);
-                }
-            }
-            if (NumberOfLines1 >= 6)
-            {
-                if (speakerSwitch <= 6)
-                {
-                    NewDialogue(Line61, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line61, speaker1);
-                }
-            }
-            if (NumberOfLines1 >= 7)
-            {
-                if (speakerSwitch <= 7)
-                {
-                    NewDialogue(Line71, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line71, speaker1);
-                }
-            }
-            if (NumberOfLines1 >= 8)
-            {
-                if (speakerSwitch <= 8)
-                {
-                    NewDialogue(Line81, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line81, speaker1);
-                }
-            }
-            if (NumberOfLines1 >= 9)
-            {
-                if (speakerSwitch <= 9)
-                {
-                    NewDialogue(Line91, speaker2);
-                }
-                else
-                {
-                    NewDialogue(Line91, speaker1);
-                }
-            }
-            count++;
-            canvas.transform.GetChild(1).gameObject.SetActive(true);
+            DialogueSetUp(Name);
         }
     }
-
     void NewDialogue(string text, string speaker)
     {
         GameObject template_clone = Instantiate(d_template, d_template.transform);
         template_clone.transform.parent = canvas.transform;
         template_clone.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = text;
         template_clone.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = speaker;
+    }
+    void DialogueSetUp(string name)
+    {
+        Dictionary<string, Dictionary<string, string>> NPCS = new Dictionary<string, Dictionary<string, string>>()
+        {
+            {"Jem", Jem},
+            {"Dill", Dill }
+        };
+        foreach (KeyValuePair<string, string> i in NPCS[name])
+        {
+            if (i.Key[0] == dialogueCounts[name][0])
+            {
+                NewDialogue(NPCS[name][i.Key], name);
+                foreach (KeyValuePair<string, List<string>> x in actions)
+                {
+                    if (i.Value == x.Key)
+                    {
+                        ExecuteAction(x.Value);
+                    }
+                }
+            }
+        }
+        int count = Int32.Parse(dialogueCounts[name]);
+        count += 1;
+        dialogueCounts[name] = count.ToString();
+        canvas.transform.GetChild(1).gameObject.SetActive(true);
+    }
+    void ExecuteAction(List<string> action)
+    {
+        if (action[0] == "Talk")
+        {
+            DialogueSetUp(action[1]);
+        }
     }
 }

@@ -450,8 +450,8 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1248392305}
-        m_TargetAssemblyTypeName: NPC_Interact, Assembly-CSharp
+      - m_Target: {fileID: 1248392310}
+        m_TargetAssemblyTypeName: NPC_Interact1, Assembly-CSharp
         m_MethodName: Interact
         m_Mode: 0
         m_Arguments:
@@ -462,8 +462,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1739461347}
-        m_TargetAssemblyTypeName: NPC_Interact, Assembly-CSharp
+      - m_Target: {fileID: 1739461351}
+        m_TargetAssemblyTypeName: NPC_Interact1, Assembly-CSharp
         m_MethodName: Interact
         m_Mode: 0
         m_Arguments:
@@ -2518,9 +2518,9 @@ GameObject:
   - component: {fileID: 1248392304}
   - component: {fileID: 1248392307}
   - component: {fileID: 1248392306}
-  - component: {fileID: 1248392305}
   - component: {fileID: 1248392308}
   - component: {fileID: 1248392309}
+  - component: {fileID: 1248392310}
   m_Layer: 0
   m_Name: Player_Detected_Dill
   m_TagString: Untagged
@@ -2543,45 +2543,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 211151178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1248392305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1248392303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e24533996d8f0d448cb9ca0fc8bb4b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  d_template: {fileID: 598519982}
-  canvas: {fileID: 1812489159}
-  speechReady: {fileID: 325292359}
-  NumberOfLines: 5
-  NumberOfLines1: 4
-  Line1: Hi! I am Dill.
-  Line2: I can read.
-  Line3: I'm spending the summer here.
-  Line4: You can come play with us.
-  Line5: I'm Jem and this is Scout.
-  Line6: 
-  Line7: 
-  Line8: 
-  Line9: 
-  Line11: Wow thats a creepy house.
-  Line21: I wonder who lives there. Lets go check it out.
-  Line31: Jem I dare you to touch it.
-  Line41: I'm not scared I'll touch it
-  Line51: 
-  Line61: 
-  Line71: 
-  Line81: 
-  Line91: 
-  speaker1: Dill
-  speaker2: Jem
-  speakerSwitch: 4
-  PlayerMovement: {fileID: 197956390}
 --- !u!58 &1248392306
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2709,6 +2670,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1248392310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248392303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7231451b711cb60409c1781be6cbd0c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  d_template: {fileID: 598519982}
+  canvas: {fileID: 1812489159}
+  speechReady: {fileID: 325292359}
+  Name: Dill
+  PlayerMovement: {fileID: 197956390}
 --- !u!1 &1271660004
 GameObject:
   m_ObjectHideFlags: 0
@@ -3375,8 +3353,8 @@ GameObject:
   - component: {fileID: 1739461346}
   - component: {fileID: 1739461349}
   - component: {fileID: 1739461348}
-  - component: {fileID: 1739461347}
   - component: {fileID: 1739461350}
+  - component: {fileID: 1739461351}
   m_Layer: 0
   m_Name: Player_Detected_Jem
   m_TagString: Untagged
@@ -3399,45 +3377,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 595473600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1739461347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739461345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e24533996d8f0d448cb9ca0fc8bb4b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  d_template: {fileID: 598519982}
-  canvas: {fileID: 1812489159}
-  speechReady: {fileID: 1652255622}
-  NumberOfLines: 2
-  NumberOfLines1: 2
-  Line1: Hey Scout!
-  Line2: Lets go play in the backyard.
-  Line3: 
-  Line4: 
-  Line5: 
-  Line6: 
-  Line7: 
-  Line8: 
-  Line9: 
-  Line11: Whose that?
-  Line21: Lets move the bush to find out.
-  Line31: 
-  Line41: 
-  Line51: 
-  Line61: 
-  Line71: 
-  Line81: 
-  Line91: 
-  speaker1: Jem
-  speaker2: 
-  speakerSwitch: 100
-  PlayerMovement: {fileID: 197956390}
 --- !u!58 &1739461348
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3552,6 +3491,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1739461351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739461345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7231451b711cb60409c1781be6cbd0c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  d_template: {fileID: 598519982}
+  canvas: {fileID: 1812489159}
+  speechReady: {fileID: 1652255622}
+  Name: Jem
+  PlayerMovement: {fileID: 197956390}
 --- !u!1 &1812489159
 GameObject:
   m_ObjectHideFlags: 0
