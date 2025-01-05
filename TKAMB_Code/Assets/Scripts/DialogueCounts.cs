@@ -9,4 +9,11 @@ public class DialogueCounts : MonoBehaviour
         {"Jem", "0"},
         {"Dill", "0"}
     };
+    public string jemCount = "0";
+    public string dillCount = "0";
+    private void Update()
+    {
+        jemCount = dialogueCounts["Jem"];
+        dillCount = dialogueCounts["Dill"];
+    }
 }

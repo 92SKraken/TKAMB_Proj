@@ -22,8 +22,8 @@ public class NPC_Interact : MonoBehaviour
     Dictionary<string, List<string>> actions = new Dictionary<string, List<string>>()
     {
         {"I'm spending the summer here.", new List<string>{"Talk", "Jem"}},
-        {"I wonder who lives there.", new List<string>{"Talk", "Jem"}},
         {"I'm Jem and this is Scout.", new List<string>{"Follow", "Dill"}},
+        {"I wonder who lives there.", new List<string>{"Talk", "Jem"}},
         {"Boo Radley lives there and he never comes out. (we should prob add more to this line)", new List<string>{"Talk", "Dill"}},
         {"I bet you won't touch it.", new List<string>{"Talk", "Jem"}},
         {"You'll see. I'll touch it.", new List<string>{"TouchHouse", "Jem"}},
@@ -93,22 +93,27 @@ public class NPC_Interact : MonoBehaviour
             {"Jem", Jem},
             {"Dill", Dill }
         };
+        List<string> executeMe = new List<string>{"", ""};
         int count = Int32.Parse(countScript.dialogueCounts[name]);
         count += 1;
         countScript.dialogueCounts[name] = count.ToString();
-        foreach (KeyValuePair<string, string> i in NPCS[name])
+        foreach (KeyValuePair<string, string> npc in NPCS[name])
         {
-            if (i.Key[0] == countScript.dialogueCounts[name][0])
+            if (npc.Key[0] == countScript.dialogueCounts[name][0])
             {
-                NewDialogue(NPCS[name][i.Key], name);
-                foreach (KeyValuePair<string, List<string>> x in actions)
+                NewDialogue(NPCS[name][npc.Key], name);
+                foreach (KeyValuePair<string, List<string>> action in actions)
                 {
-                    if (i.Value == x.Key)
+                    if (npc.Value == action.Key)
                     {
-                        ExecuteAction(x.Value);
+                        executeMe = action.Value;
                     }
                 }
             }
+        }
+        if (executeMe[0] != "")
+        {
+            ExecuteAction(executeMe);
         }
         canvas.transform.GetChild(1).gameObject.SetActive(true);
     }
