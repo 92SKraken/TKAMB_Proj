@@ -16,7 +16,7 @@ public class TouchRadleyHouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canvas.transform.childCount == 9)
+        if (canvas.transform.childCount >= 7)
         {
             child = canvas.transform.GetChild(6).gameObject;
             if (child.activeInHierarchy && onDialogue)
@@ -39,6 +39,7 @@ public class TouchRadleyHouse : MonoBehaviour
             child = null;
             canTouch = false;
             follow.canFollow = true;
+            jem.transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 }

@@ -26,7 +26,8 @@ public class NPC_Interact : MonoBehaviour
         {"I'm Jem and this is Scout.", new List<string>{"Follow", "Dill"}},
         {"Boo Radley lives there and he never comes out. (we should prob add more to this line)", new List<string>{"Talk", "Dill"}},
         {"I bet you won't touch it.", new List<string>{"Talk", "Jem"}},
-        {"You'll see. I'll touch it.", new List<string>{"TouchHouse", "Jem"}}
+        {"You'll see. I'll touch it.", new List<string>{"TouchHouse", "Jem"}},
+        {"See you later Dill", new List<string>{"RadleyDone", "Dill"}}
     };
 
     Dictionary<string, string> Jem = new Dictionary<string, string>()
@@ -39,7 +40,9 @@ public class NPC_Interact : MonoBehaviour
         {"3b", "I'm Jem and this is Scout."},
         {"4a", "Thats the Radley house."},
         {"4b", "Boo Radley lives there and he never comes out. (we should prob add more to this line)"},
-        {"5a", "You'll see. I'll touch it."}
+        {"5a", "You'll see. I'll touch it."},
+        {"6a", "Its time to go home."},
+        {"6b", "See you later Dill."}
     };
     Dictionary<string, string> Dill = new Dictionary<string, string>()
     {
@@ -115,15 +118,22 @@ public class NPC_Interact : MonoBehaviour
         {
             DialogueSetUp(action[1]);
         }
-        if (action[0] == "Follow")
+        else if (action[0] == "Follow")
         {
             GameObject follower = GameObject.Find(action[1]);
             follower.GetComponent<Follow>().canFollow = true;
         }
-        if (action[0] == "TouchHouse")
+        else if (action[0] == "TouchHouse")
         {
             GameObject house = GameObject.Find("RadleyHouse");
             house.GetComponent<TouchRadleyHouse>().onDialogue = true;
+        }
+        else if (action[0] == "RadleyDone")
+        {
+            print("radley done");
+            gameObject.SetActive(false);
+            GameObject door = GameObject.Find("FinchDoor");
+            door.GetComponent<Sleep>().canSleep = true;
         }
     }
 }
