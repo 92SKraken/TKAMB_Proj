@@ -7,6 +7,7 @@ using Unity.Collections;
 using System.IO.Pipes;
 using Unity.VisualScripting.FullSerializer;
 using System;
+using Unity.Burst.Intrinsics;
 
 public class NPC_Interact : MonoBehaviour
 {
@@ -21,37 +22,60 @@ public class NPC_Interact : MonoBehaviour
 
     Dictionary<string, List<string>> actions = new Dictionary<string, List<string>>()
     {
-        {"I'm spending the summer here.", new List<string>{"Talk", "Jem"}},
-        {"I'm Jem and this is Scout.", new List<string>{"Follow", "Dill"}},
+        {"Hey.", new List<string>{"Talk", "Jem"}},
+        {"Hey yourself.", new List<string>{"Talk", "Dill"}},
+        {"I can read.", new List<string>{"Talk", "Jem"}},
+        {"So what?", new List<string>{"Talk", "Dill"}},
+        {"Just thought you'd like to know I can read. You got anything needs readin' I can do it.", new List<string>{"Talk", "Jem"}},
+        {"How old are you? Four and a half?", new List<string>{"Talk", "Dill"}},
+        {"Goin' on seven.", new List<string>{"Talk", "Jem"}},
+        {"Lord, what a name.", new List<string>{"Talk", "Dill"}},
+        {"'s not any funnier'n yours. Aunt Rachel says your name's Jeremy Atticus Finch.", new List<string>{"Talk", "Jem"}},
+        {"Your name's longer'n you are. Bet it's a foot longer.", new List<string>{"Talk", "Dill"}},
+        {"Folks call me Dill.", new List<string>{"Follow", "Dill"}},
         {"I wonder who lives there.", new List<string>{"Talk", "Jem"}},
         {"Boo Radley lives there and he never comes out. (we should prob add more to this line)", new List<string>{"Talk", "Dill"}},
         {"I bet you won't touch it.", new List<string>{"Talk", "Jem"}},
         {"You'll see. I'll touch it.", new List<string>{"TouchHouse", "Jem"}},
-        {"See you later Dill", new List<string>{"RadleyDone", "Dill"}}
+        {"See you later Dill.", new List<string>{"RadleyDone", "Dill"}}
     };
 
     Dictionary<string, string> Jem = new Dictionary<string, string>()
     {
-        {"1a", "Hey Scout!"},
-        {"1b", "Lets go play in the backyard"},
-        {"2a", "Whose that?"},
-        {"2b", "Lets move the bush to find out."},
-        {"3a", "You can come play with us"},
-        {"3b", "I'm Jem and this is Scout."},
-        {"4a", "Thats the Radley house."},
-        {"4b", "Boo Radley lives there and he never comes out. (we should prob add more to this line)"},
-        {"5a", "You'll see. I'll touch it."},
-        {"6a", "Its time to go home."},
-        {"6b", "See you later Dill."}
+        {"0.11a", "Hey Scout!"},
+        {"0.11b", "Lets go play in the backyard."},
+        {"0.21a", "Whose that?"},
+        {"0.21b", "Lets move the bush to find out."},
+        {"0.31a", "Hey yourself."},
+        {"0.41b", "So what?"},
+        {"0.51b", "How old are you? Four and a half?"},
+        {"0.61a", "Shoot no wonder, then."},
+        {"0.61b", "Scout yonder's been readin' ever since she was born, and she ain't even started to school yet."},
+        {"0.61c", "You look right puny for goin' on seven."},
+        {"0.61d", "Why don't you come over, Charles Barker Harris?"},
+        {"0.61e", "Lord, what a name."},
+        {"0.71a", "I'm big enough to fit mine."},
+        {"0.71b", "Your name's longer'n you are. Bet it's a foot longer."},
+        {"0.81a", "Thats the Radley house."},
+        {"0.81b", "Boo Radley lives there and he never comes out. (we should prob add more to this line)"},
+        {"0.91a", "You'll see. I'll touch it."},
+        {"1.01a", "Its time to go home."},
+        {"1.01b", "See you later Dill."},
+        {"1.11a", "Its the first day of school."},
+        {"1.21", "Let's go! Hurry up!"}
     };
     Dictionary<string, string> Dill = new Dictionary<string, string>()
     {
-        {"1a", "Hi! I'm Dill."},
-        {"1b", "I can read."},
-        {"1c", "I'm spending the summer here."},
-        {"2a", "Wow that's a creepy house."},
-        {"2b", "I wonder who lives there."},
-        {"3a", "I bet you won't touch it."}
+        {"0.11a", "Hey."},
+        {"0.21b", "I'm Charles Baker Harris."},
+        {"0.21c", "I can read."},
+        {"0.31a", "Just thought you'd like to know I can read. You got anything needs readin' I can do it."},
+        {"0.41a", "Goin' on seven."},
+        {"0.51a", "'s not any funnier'n yours. Aunt Rachel says your name's Jeremy Atticus Finch."},
+        {"0.61a", "Folks call me Dill."},
+        {"0.71a", "Wow that's a creepy house."},
+        {"0.71b", "I wonder who lives there."},
+        {"0.81a", "I bet you won't touch it."}
     };
 
     public PlayerMovement PlayerMovement;
@@ -94,12 +118,12 @@ public class NPC_Interact : MonoBehaviour
             {"Dill", Dill }
         };
         List<string> executeMe = new List<string>{"", ""};
-        int count = Int32.Parse(countScript.dialogueCounts[name]);
-        count += 1;
+        double count = double.Parse(countScript.dialogueCounts[name]);
+        count += 0.1;
         countScript.dialogueCounts[name] = count.ToString();
         foreach (KeyValuePair<string, string> npc in NPCS[name])
         {
-            if (npc.Key[0] == countScript.dialogueCounts[name][0])
+            if (npc.Key.Substring(0, 3) == countScript.dialogueCounts[name].Substring(0, 3))
             {
                 NewDialogue(NPCS[name][npc.Key], name);
                 foreach (KeyValuePair<string, List<string>> action in actions)
@@ -135,8 +159,8 @@ public class NPC_Interact : MonoBehaviour
         }
         else if (action[0] == "RadleyDone")
         {
-            print("radley done");
-            gameObject.SetActive(false);
+            GameObject dill = GameObject.Find("Dill");
+            dill.SetActive(false);
             GameObject door = GameObject.Find("FinchDoor");
             door.GetComponent<Sleep>().canSleep = true;
         }

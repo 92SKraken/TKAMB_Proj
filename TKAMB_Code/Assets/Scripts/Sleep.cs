@@ -15,11 +15,17 @@ public class Sleep : MonoBehaviour
             canEnter = true;
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        canEnter = false;
+    }
     public void Interact(InputAction.CallbackContext context)
     {
         if (canEnter && context.performed && canSleep)
         {
             mainCamera.GetComponent<CameraFade>().readyToFade = true;
+            GameObject.Find("School").transform.GetChild(0).GetComponent<SchoolDoorInteractions>().slept = true;
+            GameObject.Find("Jem").transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 }

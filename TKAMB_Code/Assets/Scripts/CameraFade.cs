@@ -33,6 +33,7 @@ public class CameraFade : MonoBehaviour
                 alpha = 1f;
                 time = 0f;
                 direction = 1;
+                readyToFade = false;
             }
             else // Fully faded in
             {
