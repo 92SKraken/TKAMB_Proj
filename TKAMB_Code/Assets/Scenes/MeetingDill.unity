@@ -682,7 +682,7 @@ GameObject:
   - component: {fileID: 205873376}
   - component: {fileID: 205873375}
   - component: {fileID: 205873377}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1231,7 +1231,7 @@ GameObject:
   - component: {fileID: 525022294}
   - component: {fileID: 525022295}
   - component: {fileID: 525022296}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bush (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1349,7 +1349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 537949038}
-  - component: {fileID: 537949037}
+  - component: {fileID: 537949039}
   m_Layer: 0
   m_Name: Dialogue_Counter
   m_TagString: Untagged
@@ -1357,20 +1357,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &537949037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537949036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0dbfc06047e7c244af8f5399ff34238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jemCount: 0
-  dillCount: 0
 --- !u!4 &537949038
 Transform:
   m_ObjectHideFlags: 0
@@ -1386,6 +1372,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &537949039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537949036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0dbfc06047e7c244af8f5399ff34238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jemCount: 0
+  dillCount: 0
+  scoutCount: 0
+  teacherCount: 0
 --- !u!1 &595473597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,7 +1695,7 @@ GameObject:
   - component: {fileID: 850821460}
   - component: {fileID: 850821459}
   - component: {fileID: 850821461}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Moveable Bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1815,7 +1817,7 @@ GameObject:
   - component: {fileID: 918842466}
   - component: {fileID: 918842467}
   - component: {fileID: 918842468}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bush (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1935,7 +1937,7 @@ GameObject:
   - component: {fileID: 930721805}
   - component: {fileID: 930721806}
   - component: {fileID: 930721807}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bush (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2078,8 +2080,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1201.8099, y: 185.91998}
-  m_SizeDelta: {x: 182.1, y: 69.75}
+  m_AnchoredPosition: {x: -1149.56, y: 185.91998}
+  m_SizeDelta: {x: 286.6, y: 69.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &983511116
 MonoBehaviour:
@@ -2276,7 +2278,7 @@ GameObject:
   - component: {fileID: 1116656717}
   - component: {fileID: 1116656716}
   - component: {fileID: 1116656715}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Player_Detected_Bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2410,7 +2412,7 @@ GameObject:
   - component: {fileID: 1121141677}
   - component: {fileID: 1121141678}
   - component: {fileID: 1121141679}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bush (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2954,7 +2956,7 @@ MonoBehaviour:
   d_template: {fileID: 598519982}
   canvas: {fileID: 1812489159}
   speechReady: {fileID: 325292359}
-  countScript: {fileID: 537949037}
+  countScript: {fileID: 537949039}
   Name: Dill
   PlayerMovement: {fileID: 197956390}
 --- !u!114 &1248392311
@@ -3749,7 +3751,7 @@ GameObject:
   - component: {fileID: 1706531001}
   - component: {fileID: 1706531002}
   - component: {fileID: 1706531003}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bush (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4023,7 +4025,7 @@ MonoBehaviour:
   d_template: {fileID: 598519982}
   canvas: {fileID: 1812489159}
   speechReady: {fileID: 1652255622}
-  countScript: {fileID: 537949037}
+  countScript: {fileID: 537949039}
   Name: Jem
   PlayerMovement: {fileID: 197956390}
 --- !u!114 &1739461352
@@ -4168,7 +4170,7 @@ GameObject:
   - component: {fileID: 1859290935}
   - component: {fileID: 1859290936}
   - component: {fileID: 1859290937}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bush (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4356,7 +4358,7 @@ GameObject:
   - component: {fileID: 1886473982}
   - component: {fileID: 1886473983}
   - component: {fileID: 1886473984}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bush (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4560,7 +4562,7 @@ GameObject:
   - component: {fileID: 1984687537}
   - component: {fileID: 1984687538}
   - component: {fileID: 1984687539}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bush (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4703,8 +4705,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1039.18, y: -398.93}
-  m_SizeDelta: {x: 437.64, y: 50.005}
+  m_AnchoredPosition: {x: -991.76, y: -398.93}
+  m_SizeDelta: {x: 532.47, y: 50.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2055714523
 MonoBehaviour:

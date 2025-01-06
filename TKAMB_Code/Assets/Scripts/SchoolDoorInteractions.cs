@@ -8,7 +8,7 @@ public class SchoolDoorInteractions : MonoBehaviour
 {
     bool canEnter = false;
     public bool slept = false;
-    bool inSchool = false;
+    public bool inSchool = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")

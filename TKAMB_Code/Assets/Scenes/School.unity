@@ -411,6 +411,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 302511846}
+        m_TargetAssemblyTypeName: SchoolDoorInteractions, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 883c06e6-5abe-44ef-a0b2-e3e0947bb966
     m_ActionName: Player/Interact[/Keyboard/i]
   - m_PersistentCalls:
@@ -604,7 +616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d4e4fc07187ee4785bbd2f15389fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slept: 0
+  slept: 1
+  inSchool: 1
 --- !u!61 &302511847
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -886,7 +899,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 537949038}
-  - component: {fileID: 537949037}
+  - component: {fileID: 537949039}
   m_Layer: 0
   m_Name: Dialogue_Counter
   m_TagString: Untagged
@@ -894,20 +907,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &537949037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537949036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0dbfc06047e7c244af8f5399ff34238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jemCount: 0
-  dillCount: 0
 --- !u!4 &537949038
 Transform:
   m_ObjectHideFlags: 0
@@ -923,6 +922,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &537949039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537949036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0dbfc06047e7c244af8f5399ff34238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jemCount: 1.01
+  dillCount: 0.81
+  scoutCount: 0.11
+  teacherCount: 0.01
 --- !u!1 &598519982
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,7 +1012,7 @@ MonoBehaviour:
   d_template: {fileID: 598519982}
   canvas: {fileID: 1812489159}
   speechReady: {fileID: 504783631}
-  countScript: {fileID: 537949037}
+  countScript: {fileID: 537949039}
   Name: Teacher
   PlayerMovement: {fileID: 197956390}
 --- !u!4 &607412192
@@ -1236,7 +1251,6 @@ GameObject:
   m_Component:
   - component: {fileID: 686993107}
   - component: {fileID: 686993111}
-  - component: {fileID: 686993110}
   - component: {fileID: 686993109}
   - component: {fileID: 686993108}
   m_Layer: 0
@@ -1335,21 +1349,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &686993110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686993106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a2a4176bba18cc40b2b31847b7ce656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  canFollow: 0
-  howClose: 2
 --- !u!212 &686993111
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1436,8 +1435,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1201.8099, y: 185.91998}
-  m_SizeDelta: {x: 182.1, y: 69.75}
+  m_AnchoredPosition: {x: -1149.56, y: 185.91998}
+  m_SizeDelta: {x: 286.6, y: 69.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &983511116
 MonoBehaviour:

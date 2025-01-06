@@ -1349,7 +1349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 537949038}
-  - component: {fileID: 537949037}
+  - component: {fileID: 537949039}
   m_Layer: 0
   m_Name: Dialogue_Counter
   m_TagString: Untagged
@@ -1357,20 +1357,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &537949037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537949036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0dbfc06047e7c244af8f5399ff34238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jemCount: 0
-  dillCount: 0
 --- !u!4 &537949038
 Transform:
   m_ObjectHideFlags: 0
@@ -1386,6 +1372,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &537949039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537949036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0dbfc06047e7c244af8f5399ff34238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jemCount: 0.01
+  dillCount: 0.01
+  scoutCount: 0.01
+  teacherCount: 0.01
 --- !u!1 &595473597
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,8 +2080,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1201.8099, y: 185.91998}
-  m_SizeDelta: {x: 182.1, y: 69.75}
+  m_AnchoredPosition: {x: -1150.97, y: 185.91998}
+  m_SizeDelta: {x: 283.77, y: 69.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &983511116
 MonoBehaviour:
@@ -2939,7 +2941,7 @@ MonoBehaviour:
   d_template: {fileID: 598519982}
   canvas: {fileID: 1812489159}
   speechReady: {fileID: 325292359}
-  countScript: {fileID: 537949037}
+  countScript: {fileID: 0}
   Name: Walter
   PlayerMovement: {fileID: 197956390}
 --- !u!114 &1248392311
@@ -4008,7 +4010,7 @@ MonoBehaviour:
   d_template: {fileID: 598519982}
   canvas: {fileID: 1812489159}
   speechReady: {fileID: 1652255622}
-  countScript: {fileID: 537949037}
+  countScript: {fileID: 0}
   Name: Jem
   PlayerMovement: {fileID: 197956390}
 --- !u!114 &1739461352
